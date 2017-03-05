@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) 2017 RTG
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title> Name Suggester </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <style>
+        
+        body {
+            background-color: white;
+            padding: 40px;
+            max-width: 800px;
+            box-shadow: 0 0 50px black;
+            margin: 30px auto;
+            text-align: center;
+        }
+    
+        div {
+            background-color: white;
+            padding: 40px;
+            max-width: 700px;
+            box-shadow: 0 0 45px black;
+            margin: 30px auto;
+            text-align: center;
+        }
+        
+        footer {            
+            background-color: white;
+            padding: 40px;
+            max-width: 700px;
+            box-shadow: 0 0 45px red;
+            margin: 30px auto;
+            text-align: center;           
+        }
+        
+    </style>
+    
+    <body> 
+            <h1>
+                RTGNetwork | Name Suggester
+            </h1>
+            
+        <div>
+            
+            
+            <script>
+                
+            function showHint(str) {
+                
+                if (str.length == 0) { 
+                    document.getElementById("txtHint").innerHTML = "";
+                    return;
+                } else {
+                    
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById("txtHint").innerHTML = this.responseText;
+                        }
+                }
+                xmlhttp.open("GET", "get.php?q="+str, true);
+                xmlhttp.send();
+  
+                }
+            }
+                 
+            </script>
+            <strong>  <p> Type any word to get your suggested word! </p></strong>
+            <br>
+            <form> 
+                First name: <input type="text" onkeyup="showHint(this.value)">
+            </form>
+            <p>Suggestions: <span id="txtHint"></span></p
+            
+            
+        </div>
+    </body>
+    
+    <footer>
+        &copy; 2017 Raeveen Pasupathy
+        <br>
+        <p></p>
+        <button> <a href="https://github.com/RTGDaCoder/NameSuggester"> GitHub SRC </a> </button>
+        
+    </footer>
+    
+</html>
